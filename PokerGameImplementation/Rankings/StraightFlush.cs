@@ -7,6 +7,9 @@ using System.Linq;
 
 namespace PokerGameImplementation.Rankings
 {
+    /// <summary>
+    /// Class representing a hand that has all cards of the same suit in sequential order
+    /// </summary>
     public class StraightFlush : HandRanking
     {
         private const int GROUP_NUMBER = 2;
@@ -15,9 +18,9 @@ namespace PokerGameImplementation.Rankings
 
         protected override HandRank Rank => HandRank.StraightFlush;
 
-        public CardValue PairValue => Hand.GetFirstKindGroupCardValue(GROUP_NUMBER);
+        internal CardValue PairValue => Hand.GetFirstKindGroupCardValue(GROUP_NUMBER);
 
-        public IEnumerable<Card> Kickers => Hand.GetKickers(Hand.GetFlattenedKindGroup(GROUP_NUMBER));
+        internal IEnumerable<Card> Kickers => Hand.GetKickers(Hand.GetFlattenedKindGroup(GROUP_NUMBER));
 
         protected override int TieBreaker(HandRanking other)
         {

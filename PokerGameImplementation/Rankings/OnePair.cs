@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace PokerGameImplementation.Rankings
 {
+    /// <summary>
+    /// Class representing a hand that contains a single pair
+    /// </summary>
     public class OnePair : HandRanking
     {
         private const int GROUP_NUMBER = 2;
@@ -14,9 +17,9 @@ namespace PokerGameImplementation.Rankings
 
         protected override HandRank Rank => HandRank.OnePair;
 
-        public CardValue PairValue => Hand.GetFirstKindGroupCardValue(GROUP_NUMBER);
+        internal CardValue PairValue => Hand.GetFirstKindGroupCardValue(GROUP_NUMBER);
 
-        public IEnumerable<Card> Kickers => Hand.GetKickers(Hand.GetFlattenedKindGroup(GROUP_NUMBER));
+        internal IEnumerable<Card> Kickers => Hand.GetKickers(Hand.GetFlattenedKindGroup(GROUP_NUMBER));
 
         protected override int TieBreaker(HandRanking other)
         {

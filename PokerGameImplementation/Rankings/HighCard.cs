@@ -3,6 +3,9 @@ using PokerGameImplementation.Rankings.Enums;
 
 namespace PokerGameImplementation.Rankings
 {
+    /// <summary>
+    /// Class representing a hand where the high card is significant
+    /// </summary>
     public class HighCard : HandRanking
     {
         internal HighCard(IHand hand) : base(hand) { }

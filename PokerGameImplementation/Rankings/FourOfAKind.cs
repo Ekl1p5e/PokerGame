@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace PokerGameImplementation.Rankings
 {
+    /// <summary>
+    /// Class representing a hand that contains four of a kind
+    /// </summary>
     public class FourOfAKind : HandRanking
     {
         private const int GROUP_NUMBER = 4;
@@ -16,7 +19,7 @@ namespace PokerGameImplementation.Rankings
 
         internal CardValue Kind => Hand.GetFirstKindGroupCardValue(GROUP_NUMBER);
 
-        public IEnumerable<Card> Kickers => Hand.GetKickers(Hand.GetFlattenedKindGroup(GROUP_NUMBER));
+        internal IEnumerable<Card> Kickers => Hand.GetKickers(Hand.GetFlattenedKindGroup(GROUP_NUMBER));
 
         protected override int TieBreaker(HandRanking other)
         {

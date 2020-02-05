@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace PokerGameImplementation.Rankings
 {
+    /// <summary>
+    /// Class representing a hand that contains three of a kind
+    /// </summary>
     public class ThreeOfAKind : HandRanking
     {
         private const int GROUP_NUMBER = 3;

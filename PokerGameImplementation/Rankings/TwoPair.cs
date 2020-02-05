@@ -7,6 +7,9 @@ using System.Linq;
 
 namespace PokerGameImplementation.Rankings
 {
+    /// <summary>
+    /// Class representing a hand that contains two pairs
+    /// </summary>
     public class TwoPair : HandRanking
     {
         private const int GROUP_NUMBER = 2;
@@ -15,9 +18,9 @@ namespace PokerGameImplementation.Rankings
 
         protected override HandRank Rank => HandRank.TwoPair;
 
-        public IEnumerable<CardValue> PairValues => Hand.GetKindGroup(GROUP_NUMBER).Select(group => group.Key);
+        internal IEnumerable<CardValue> PairValues => Hand.GetKindGroup(GROUP_NUMBER).Select(group => group.Key);
 
-        public IEnumerable<Card> Kickers => Hand.GetKickers(Hand.GetFlattenedKindGroup(GROUP_NUMBER));
+        internal IEnumerable<Card> Kickers => Hand.GetKickers(Hand.GetFlattenedKindGroup(GROUP_NUMBER));
 
         protected override int TieBreaker(HandRanking other)
         {

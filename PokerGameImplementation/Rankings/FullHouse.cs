@@ -4,6 +4,9 @@ using PokerGameImplementation.Rankings.Enums;
 
 namespace PokerGameImplementation.Rankings
 {
+    /// <summary>
+    /// Class representing a hand that contains a three of a kind and a two of a kind
+    /// </summary>
     public class FullHouse : HandRanking
     {
         private const int THREE_KIND_GROUP_NUMBER = 3;
@@ -14,9 +17,9 @@ namespace PokerGameImplementation.Rankings
 
         protected override HandRank Rank => HandRank.FullHouse;
 
-        public CardValue ThreeKind => Hand.GetFirstKindGroupCardValue(THREE_KIND_GROUP_NUMBER);
+        internal CardValue ThreeKind => Hand.GetFirstKindGroupCardValue(THREE_KIND_GROUP_NUMBER);
 
-        public CardValue TwoKind => Hand.GetFirstKindGroupCardValue(TWO_KIND_GROUP_NUMBER);
+        internal CardValue TwoKind => Hand.GetFirstKindGroupCardValue(TWO_KIND_GROUP_NUMBER);
 
         protected override int TieBreaker(HandRanking other)
         {
