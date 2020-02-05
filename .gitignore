@@ -1,0 +1,12 @@
+
+PokerGame.Interfaces/bin/*
+PokerGame.Interfaces/obj/*
+PokerGame.Interfaces.UnitTests/bin/*
+PokerGame.Interfaces.UnitTests/obj/*
+PokerGameApp/.vs/*
+PokerGameApp/PokerGameApp/bin/*
+PokerGameApp/PokerGameApp/obj/*
+PokerGameImplementation/bin/*
+PokerGameImplementation/obj/*
+PokerGameImplementation.UnitTests/bin/*
+PokerGameImplementation.UnitTests/obj/*
