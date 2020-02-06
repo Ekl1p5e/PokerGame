@@ -9,13 +9,13 @@ namespace PokerGameImplementation.Rankings
     /// <summary>
     /// Class representing a hand that contains a three of a kind and a two of a kind
     /// </summary>
-    public class FullHouse : HandRanking
+    public class FullHouseHand : HandRanking
     {
         private const int THREE_KIND_GROUP_NUMBER = 3;
 
         private const int TWO_KIND_GROUP_NUMBER = 2;
 
-        internal FullHouse(IHand hand) : base(hand) { }
+        internal FullHouseHand(IHand hand) : base(hand) { }
 
         protected override HandRank Rank => HandRank.FullHouse;
 
@@ -25,7 +25,7 @@ namespace PokerGameImplementation.Rankings
 
         protected override int TieBreaker(HandRanking other)
         {
-            var right = other as FullHouse;
+            var right = other as FullHouseHand;
             if (ThreeKind == right.ThreeKind)
             {
                 if (TwoKind != right.TwoKind)

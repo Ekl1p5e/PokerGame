@@ -24,39 +24,39 @@ namespace PokerGameImplementation
                 {
                     if (hand.HighestValue() == CardValue.Ace)
                     {
-                        return new RoyalFlush(hand);
+                        return new RoyalFlushHand(hand);
                     }
 
-                    return new StraightFlush(hand);
+                    return new StraightFlushHand(hand);
                 }
 
-                return new Flush(hand);
+                return new FlushHand(hand);
             }
 
             var kinds = hand.GetKindsCount();
             if (kinds.Contains(4))
             {
-                return new FourOfAKind(hand);
+                return new FourOfAKindHand(hand);
             }
             else if (kinds.Contains(3))
             {
                 if (kinds.Contains(2))
                 {
-                    return new FullHouse(hand);
+                    return new FullHouseHand(hand);
                 }
 
-                return new ThreeOfAKind(hand);
+                return new ThreeOfAKindHand(hand);
             }
             else if (kinds.Contains(2))
             {
                 var pairCt = kinds.Count(kind => kind == 2);
                 if (pairCt == 2)
                 {
-                    return new TwoPair(hand);
+                    return new TwoPairHand(hand);
                 }
                 else if (pairCt == 1)
                 {
-                    return new OnePair(hand);
+                    return new OnePairHand(hand);
                 }
             }
 
@@ -65,7 +65,7 @@ namespace PokerGameImplementation
                 return new StraightHand(hand);
             }
 
-            return new HighCard(hand);
+            return new HighCardHand(hand);
         }
     }
 }

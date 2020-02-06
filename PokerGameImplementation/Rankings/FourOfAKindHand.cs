@@ -8,35 +8,29 @@ using System.Runtime.CompilerServices;
 namespace PokerGameImplementation.Rankings
 {
     /// <summary>
-    /// Class representing a hand that contains a single pair
+    /// Class representing a hand that contains four of a kind
     /// </summary>
-    public class OnePair : HandRanking
+    public class FourOfAKindHand : HandRanking
     {
-        private const int GROUP_NUMBER = 2;
+        private const int GROUP_NUMBER = 4;
 
-        internal OnePair(IHand hand) : base(hand) { }
+        internal FourOfAKindHand(IHand hand) : base(hand) { }
 
-        protected override HandRank Rank => HandRank.OnePair;
+        protected override HandRank Rank => HandRank.FourOfAKind;
 
-        internal CardValue PairValue => Hand.GetFirstKindGroupCardValue(GROUP_NUMBER);
+        internal CardValue Kind => Hand.GetFirstKindGroupCardValue(GROUP_NUMBER);
 
         internal IEnumerable<ICard> Kickers => Hand.GetKickers(Hand.GetFlattenedKindGroup(GROUP_NUMBER));
 
         protected override int TieBreaker(HandRanking other)
         {
-            var right = other as OnePair;
-            if (PairValue > right.PairValue)
-            {
-                return 1;
-            }
-            else if (PairValue < right.PairValue)
-            {
-                return -1;
-            }
-            else
+            var right = other as FourOfAKindHand;
+            if (Kind == right.Kind)
             {
                 return Kickers.CompareSequenceTo(right.Kickers);
             }
+
+            return Kind > right.Kind ? 1 : -1;
         }
     }
 }

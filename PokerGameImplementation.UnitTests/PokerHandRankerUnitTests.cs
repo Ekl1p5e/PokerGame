@@ -19,7 +19,7 @@ namespace PokerGameImplementation.UnitTests
 
             var ranking = ranker.GetRanking(hand.Object);
 
-            Assert.IsType<Flush>(ranking);
+            Assert.IsType<FlushHand>(ranking);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace PokerGameImplementation.UnitTests
 
             var ranking = ranker.GetRanking(hand.Object);
 
-            Assert.IsType<StraightFlush>(ranking);
+            Assert.IsType<StraightFlushHand>(ranking);
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace PokerGameImplementation.UnitTests
 
             var ranking = ranker.GetRanking(hand.Object);
 
-            Assert.IsType<RoyalFlush>(ranking);
+            Assert.IsType<RoyalFlushHand>(ranking);
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace PokerGameImplementation.UnitTests
 
             var ranking = ranker.GetRanking(hand.Object);
 
-            Assert.IsType<FourOfAKind>(ranking);
+            Assert.IsType<FourOfAKindHand>(ranking);
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace PokerGameImplementation.UnitTests
 
             var ranking = ranker.GetRanking(hand.Object);
 
-            Assert.IsType<ThreeOfAKind>(ranking);
+            Assert.IsType<ThreeOfAKindHand>(ranking);
         }
 
         [Fact]
@@ -79,7 +79,7 @@ namespace PokerGameImplementation.UnitTests
 
             var ranking = ranker.GetRanking(hand.Object);
 
-            Assert.IsType<FullHouse>(ranking);
+            Assert.IsType<FullHouseHand>(ranking);
         }
 
         [Fact]
@@ -91,7 +91,7 @@ namespace PokerGameImplementation.UnitTests
 
             var ranking = ranker.GetRanking(hand.Object);
 
-            Assert.IsType<TwoPair>(ranking);
+            Assert.IsType<TwoPairHand>(ranking);
         }
 
         [Fact]
@@ -103,7 +103,7 @@ namespace PokerGameImplementation.UnitTests
 
             var ranking = ranker.GetRanking(hand.Object);
 
-            Assert.IsType<OnePair>(ranking);
+            Assert.IsType<OnePairHand>(ranking);
         }
 
         [Fact]
@@ -127,7 +127,7 @@ namespace PokerGameImplementation.UnitTests
 
             var ranking = ranker.GetRanking(hand.Object);
 
-            Assert.IsType<HighCard>(ranking);
+            Assert.IsType<HighCardHand>(ranking);
         }
     }
 }

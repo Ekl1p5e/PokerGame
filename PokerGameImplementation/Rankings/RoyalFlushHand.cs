@@ -8,9 +8,9 @@ namespace PokerGameImplementation.Rankings
     /// <summary>
     /// Class representing a hand that has all cards of the same suit in sequential order, where the Ace is high
     /// </summary>
-    public class RoyalFlush : HandRanking
+    public class RoyalFlushHand : HandRanking
     {
-        internal RoyalFlush(IHand hand) : base(hand) { }
+        internal RoyalFlushHand(IHand hand) : base(hand) { }
 
         protected override HandRank Rank => HandRank.RoyalFlush;
 

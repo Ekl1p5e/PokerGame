@@ -2,35 +2,36 @@
 using PokerGame.Interfaces.Enums;
 using PokerGameImplementation.Enums;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("PokerGameImplementation.UnitTests")]
 namespace PokerGameImplementation.Rankings
 {
     /// <summary>
-    /// Class representing a hand that contains four of a kind
+    /// Class representing a hand that contains two pairs
     /// </summary>
-    public class FourOfAKind : HandRanking
+    public class TwoPairHand : HandRanking
     {
-        private const int GROUP_NUMBER = 4;
+        private const int GROUP_NUMBER = 2;
 
-        internal FourOfAKind(IHand hand) : base(hand) { }
+        internal TwoPairHand(IHand hand) : base(hand) { }
 
-        protected override HandRank Rank => HandRank.FourOfAKind;
+        protected override HandRank Rank => HandRank.TwoPair;
 
-        internal CardValue Kind => Hand.GetFirstKindGroupCardValue(GROUP_NUMBER);
+        internal IEnumerable<CardValue> PairValues => Hand.GetKindGroup(GROUP_NUMBER).Select(group => group.Key);
 
         internal IEnumerable<ICard> Kickers => Hand.GetKickers(Hand.GetFlattenedKindGroup(GROUP_NUMBER));
 
         protected override int TieBreaker(HandRanking other)
         {
-            var right = other as FourOfAKind;
-            if (Kind == right.Kind)
+            var right = other as TwoPairHand;
+            if (PairValues.SequenceEqual(right.PairValues))
             {
                 return Kickers.CompareSequenceTo(right.Kickers);
             }
 
-            return Kind > right.Kind ? 1 : -1;
+            return 0;
         }
     }
 }

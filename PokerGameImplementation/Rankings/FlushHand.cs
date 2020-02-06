@@ -8,9 +8,9 @@ namespace PokerGameImplementation.Rankings
     /// <summary>
     /// Class representing a hand that has all cards of the same suit
     /// </summary>
-    public class Flush : HandRanking
+    public class FlushHand : HandRanking
     {
-        internal Flush(IHand hand) : base(hand) { }
+        internal FlushHand(IHand hand) : base(hand) { }
 
         protected override HandRank Rank => HandRank.Flush;
 

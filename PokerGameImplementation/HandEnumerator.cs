@@ -13,7 +13,6 @@ namespace PokerGameImplementation
     {
         private readonly int _handCardCount;
         private readonly IEnumerable<ICard> _cards;
-
         private readonly IEnumerator<IHand> _handEnumerator;
 
         /// <summary>
