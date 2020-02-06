@@ -62,7 +62,7 @@ namespace PokerGameImplementation
 
             if (hand.IsSequential())
             {
-                return new Straight(hand);
+                return new StraightHand(hand);
             }
 
             return new HighCard(hand);

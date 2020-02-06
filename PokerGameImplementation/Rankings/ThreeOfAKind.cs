@@ -25,7 +25,7 @@ namespace PokerGameImplementation.Rankings
             var right = other as ThreeOfAKind;
             if (Kind == right.Kind)
             {
-                return Kickers.IsGreaterSequence(right.Kickers);
+                return Kickers.CompareSequenceTo(right.Kickers);
             }
 
             return Kind > right.Kind ? 1 : -1;

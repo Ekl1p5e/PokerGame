@@ -24,7 +24,7 @@ namespace PokerGameImplementation
         /// 0 if left and right are sequence equal
         /// 1 if left is greater than right
         /// </returns>
-        internal static int IsGreaterSequence(this IEnumerable<ICard> left, IEnumerable<ICard> right)
+        internal static int CompareSequenceTo(this IEnumerable<ICard> left, IEnumerable<ICard> right)
         {
             var orderedLeft = left.OrderByDescending(card => card.Value);
             var orderedRight = right.OrderByDescending(card => card.Value);
@@ -44,7 +44,7 @@ namespace PokerGameImplementation
         /// Compares hands to determine if greater, lesser, or the same
         /// </summary>
         /// <remarks>
-        /// Internally uses the overloaded <see cref="IsGreaterSequence(IEnumerable{ICard}, IEnumerable{ICard})"/> method
+        /// Internally uses the overloaded <see cref="CompareSequenceTo(IEnumerable{ICard}, IEnumerable{ICard})"/> method
         /// </remarks>
         /// <param name="left">Binding variable of left sequence</param>
         /// <param name="right">Sequence to compare</param>
@@ -53,9 +53,9 @@ namespace PokerGameImplementation
         /// 0 if left and right are sequence equal
         /// 1 if left is greater than right
         /// </returns>
-        internal static int IsGreaterSequence(this IHand left, IHand right)
+        internal static int CompareSequenceTo(this IHand left, IHand right)
         {
-            return left.Cards.IsGreaterSequence(right.Cards);
+            return left.Cards.CompareSequenceTo(right.Cards);
         }
 
         /// <summary>

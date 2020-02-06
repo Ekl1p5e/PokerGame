@@ -6,16 +6,16 @@ namespace PokerGameImplementation.Rankings
     /// <summary>
     /// Class representing a hand where cards are in sequential order, regardless of suit
     /// </summary>
-    public class Straight : HandRanking
+    public class StraightHand : HandRanking
     {
-        internal Straight(IHand hand) : base(hand) { }
+        internal StraightHand(IHand hand) : base(hand) { }
 
         protected override HandRank Rank => HandRank.Straight;
 
         protected override int TieBreaker(HandRanking other)
         {
-            var right = other as Straight;
-            return Hand.IsGreaterSequence(right.Hand);
+            var right = other as StraightHand;
+            return Hand.CompareSequenceTo(right.Hand);
         }
     }
 }

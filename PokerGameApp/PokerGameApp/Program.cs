@@ -3,6 +3,7 @@ using PokerGame.Interfaces;
 using PokerGameImplementation;
 using PokerGameImplementation.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Unity;
 using Unity.Injection;
@@ -56,8 +57,8 @@ namespace PokerGameApp
             _container.RegisterSingleton<IPokerGame, BasicPokerGame>();
             _container.RegisterSingleton<IUserInput, ConsoleInput>();
             _container.RegisterSingleton<ICodeConverter, PokerCodesConverter>();
-            _container.RegisterSingleton<ICardEnumerator, InputCodesCollection>(new InjectionConstructor(typeof(ICodeConverter), typeof(IUserInput), CONSOLE_INPUT_COUNT));
-            _container.RegisterSingleton<IHandEnumerator, HandEnumerator>(new InjectionConstructor(typeof(ICardEnumerator), HAND_CARDS_COUNT));
+            _container.RegisterSingleton<IEnumerable<ICard>, InputCodesCollection>(new InjectionConstructor(typeof(ICodeConverter), typeof(IUserInput), CONSOLE_INPUT_COUNT));
+            _container.RegisterSingleton<IHandEnumerator, HandEnumerator>(new InjectionConstructor(typeof(IEnumerable<ICard>), HAND_CARDS_COUNT));
             _container.RegisterSingleton<IGameOutput, PokerGameOutput>();
         }
     }

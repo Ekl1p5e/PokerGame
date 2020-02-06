@@ -115,7 +115,7 @@ namespace PokerGameImplementation.UnitTests
 
             var ranking = ranker.GetRanking(hand.Object);
 
-            Assert.IsType<Straight>(ranking);
+            Assert.IsType<StraightHand>(ranking);
         }
 
         [Fact]

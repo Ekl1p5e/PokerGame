@@ -33,7 +33,7 @@ namespace PokerGameImplementation.Rankings
             }
             else
             {
-                return Kickers.IsGreaterSequence(right.Kickers);
+                return Kickers.CompareSequenceTo(right.Kickers);
             }
         }
     }

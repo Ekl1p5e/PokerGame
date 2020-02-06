@@ -14,7 +14,7 @@ namespace PokerGameImplementation.Rankings
 
         protected override int TieBreaker(HandRanking other)
         {
-            return Hand.IsGreaterSequence(other.Hand);
+            return Hand.CompareSequenceTo(other.Hand);
         }
     }
 }

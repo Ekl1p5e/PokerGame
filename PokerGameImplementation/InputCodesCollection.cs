@@ -10,7 +10,7 @@ namespace PokerGameImplementation
     /// <summary>
     /// Class that gathers codes from user
     /// </summary>
-    public class InputCodesCollection : ICardEnumerator
+    public class InputCodesCollection : IEnumerable<ICard>
     {
         private readonly IEnumerable<ICard> _cards;
 

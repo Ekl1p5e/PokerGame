@@ -26,7 +26,7 @@ namespace PokerGameImplementation.Rankings
             var right = other as TwoPair;
             if (PairValues.SequenceEqual(right.PairValues))
             {
-                return Kickers.IsGreaterSequence(right.Kickers);
+                return Kickers.CompareSequenceTo(right.Kickers);
             }
 
             return 0;

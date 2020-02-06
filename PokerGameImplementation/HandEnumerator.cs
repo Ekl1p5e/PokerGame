@@ -10,11 +10,11 @@ namespace PokerGameImplementation
     public class HandEnumerator : IHandEnumerator
     {
         private readonly int _handCardCount;
-        private readonly ICardEnumerator _cards;
+        private readonly IEnumerable<ICard> _cards;
 
         private readonly IEnumerator<IHand> _handEnumerator;
 
-        public HandEnumerator(ICardEnumerator cards, int handCardCount)
+        public HandEnumerator(IEnumerable<ICard> cards, int handCardCount)
         {
             _cards = cards ?? throw new ArgumentNullException(nameof(cards));
             _handCardCount = handCardCount;
