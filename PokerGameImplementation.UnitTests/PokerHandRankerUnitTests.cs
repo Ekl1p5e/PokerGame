@@ -2,10 +2,12 @@
 using PokerGame.Interfaces;
 using PokerGameImplementation.Rankings;
 using PokerGameImplementation.UnitTests.Helpers;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace PokerGameImplementation.UnitTests
 {
+    [ExcludeFromCodeCoverage]
     public class PokerHandRankerUnitTests
     {
         [Fact]

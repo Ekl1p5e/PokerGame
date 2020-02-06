@@ -1,5 +1,6 @@
 ﻿using PokerGame.Interfaces;
-using PokerGameImplementation.Rankings.Enums;
+using PokerGameImplementation.Enums;
+using PokerGameImplementation.Interfaces;
 using System;
 
 namespace PokerGameImplementation.Rankings

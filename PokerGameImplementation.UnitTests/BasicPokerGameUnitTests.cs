@@ -1,11 +1,14 @@
 ﻿using Moq;
 using PokerGame.Interfaces;
 using PokerGame.Interfaces.Enums;
+using PokerGameImplementation.Interfaces;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace PokerGameImplementation.UnitTests
 {
+    [ExcludeFromCodeCoverage]
     public class BasicPokerGameUnitTests
     {
         [Fact]

@@ -1,5 +1,4 @@
 ﻿using PokerGame.Interfaces;
-using PokerGame.Interfaces.Entities;
 using PokerGame.Interfaces.Enums;
 using System;
 using System.Collections.Generic;

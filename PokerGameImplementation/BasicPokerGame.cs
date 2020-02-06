@@ -1,6 +1,7 @@
 ﻿using Poker.Interfaces;
 using PokerGame.Interfaces;
 using PokerGame.Interfaces.Enums;
+using PokerGameImplementation.Interfaces;
 using System;
 
 namespace PokerGameImplementation

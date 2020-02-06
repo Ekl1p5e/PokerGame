@@ -1,5 +1,6 @@
 ﻿using PokerGame.Interfaces;
 using PokerGame.Interfaces.Enums;
+using PokerGameImplementation.Interfaces;
 using PokerGameImplementation.Rankings;
 using System.Linq;
 

@@ -1,13 +1,14 @@
 ﻿using Moq;
 using PokerGame.Interfaces;
-using PokerGame.Interfaces.Entities;
 using PokerGame.Interfaces.Enums;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace PokerGameImplementation.UnitTests.Helpers
 {
+    [ExcludeFromCodeCoverage]
     internal static class Extensions
     {
         internal static Mock<IHand> IsFlush(this Mock<IHand> hand, CardSuit suit = default)

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace PokerGameImplementation
 {
-    public class PokerHandCodesConverter : ICodeConverter
+    public class PokerCodesConverter : ICodeConverter
     {
         private readonly Dictionary<string, Card> _cardCache = new Dictionary<string, Card>();
 

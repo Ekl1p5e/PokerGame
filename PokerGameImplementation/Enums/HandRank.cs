@@ -1,5 +1,8 @@
-﻿namespace PokerGameImplementation.Rankings.Enums
+﻿namespace PokerGameImplementation.Enums
 {
+    /// <summary>
+    /// Hand ranks of basic poker game
+    /// </summary>
     public enum HandRank
     {
         HighCard,

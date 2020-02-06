@@ -1,10 +1,15 @@
-﻿using PokerGameImplementation.Rankings.Enums;
+﻿using PokerGameImplementation.Enums;
+using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace PokerGameImplementation.UnitTests.EnumsTests
 {
+    [ExcludeFromCodeCoverage]
     public class HandRankUnitTests
     {
+        private const int HAND_RANKS_COUNT = 10;
+
         [Theory]
         [InlineData(HandRank.RoyalFlush, HandRank.StraightFlush)]
         [InlineData(HandRank.StraightFlush, HandRank.FourOfAKind)]
@@ -18,6 +23,12 @@ namespace PokerGameImplementation.UnitTests.EnumsTests
         public void HandRank_HasCorrectOrdering(HandRank higher, HandRank lower)
         {
             Assert.True(higher > lower);
+        }
+
+        [Fact]
+        public void HandRank_NumberOfCardValuesHasNotChanged()
+        {
+            Assert.Equal(HAND_RANKS_COUNT, Enum.GetValues(typeof(HandRank)).Length);
         }
     }
 }

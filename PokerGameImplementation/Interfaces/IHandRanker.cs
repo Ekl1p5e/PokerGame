@@ -1,4 +1,6 @@
-﻿namespace PokerGame.Interfaces
+﻿using PokerGame.Interfaces;
+
+namespace PokerGameImplementation.Interfaces
 {
     /// <summary>
     /// Interface for ranking hands within a poker game

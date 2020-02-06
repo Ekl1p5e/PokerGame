@@ -10,22 +10,18 @@ namespace PokerGameImplementation
     /// <summary>
     /// Class that gathers codes from user
     /// </summary>
-    public class ConsoleCodeInput : ICardEnumerator
+    public class InputCodesCollection : ICardEnumerator
     {
-        private const string Prompt = "Enter the system codes for two hands of cards:";
-
         private readonly IEnumerable<ICard> _cards;
 
         /// <summary>
-        /// Initializes an instance of the <see cref="ConsoleCodeInput"/> class
+        /// Initializes an instance of the <see cref="InputCodesCollection"/> class
         /// </summary>
         /// <param name="converter">Converter used to create cards from input</param>
         /// <param name="count">Number of codes expected from user</param>
-        public ConsoleCodeInput(ICodeConverter converter, int count)
+        public InputCodesCollection(ICodeConverter converter, IUserInput userInput, int count)
         {
-            Console.WriteLine(Prompt);
-
-            var input = Console.ReadLine();
+            var input = userInput.GetInput();
             var codes = input.Trim().Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Distinct();
 
             if (codes.Count() == count)

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PokerGame.Interfaces
+namespace PokerGameImplementation.Interfaces
 {
     /// <summary>
     /// Interface representing a hand ranking
