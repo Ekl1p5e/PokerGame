@@ -7,6 +7,9 @@ using System.Linq;
 
 namespace PokerGameImplementation
 {
+    /// <summary>
+    /// Class that converts string poker code representation to a poker card
+    /// </summary>
     public class PokerCodesConverter : ICodeConverter
     {
         private readonly Dictionary<string, Card> _cardCache = new Dictionary<string, Card>();
@@ -36,6 +39,11 @@ namespace PokerGameImplementation
             { 'A', CardValue.Ace },
         };
 
+        /// <summary>
+        /// Translates code into poker card
+        /// </summary>
+        /// <param name="code">poker code</param>
+        /// <returns>poker card</returns>
         public ICard GetCard(string code)
         {
             if (string.IsNullOrWhiteSpace(code))

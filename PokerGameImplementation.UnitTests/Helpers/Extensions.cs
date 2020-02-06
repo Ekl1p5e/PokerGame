@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using AutoFixture;
+using Moq;
 using PokerGame.Interfaces;
 using PokerGame.Interfaces.Enums;
 using System;
@@ -11,6 +12,8 @@ namespace PokerGameImplementation.UnitTests.Helpers
     [ExcludeFromCodeCoverage]
     internal static class Extensions
     {
+        private static IFixture _fixture;
+
         internal static Mock<IHand> FourOfAKindHandRank(this Mock<IHand> hand, CardValue value = default)
         {
             var kinds = new List<Card>(Enum.GetValues(typeof(CardSuit)).
@@ -266,6 +269,19 @@ namespace PokerGameImplementation.UnitTests.Helpers
                 Select(cardValue => new Card(cardValue, default));
 
             return cards.Concat(kickers);
+        }
+
+        public static IFixture TestFixture
+        {
+            get
+            {
+                if (_fixture == null)
+                {
+                    _fixture = new Fixture();
+                }
+
+                return _fixture;
+            }
         }
     }
 }

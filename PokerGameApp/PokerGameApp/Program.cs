@@ -55,6 +55,7 @@ namespace PokerGameApp
             //  Registrations
             _container.RegisterSingleton<IHandRanker, PokerHandRanker>();
             _container.RegisterSingleton<IPokerGame, BasicPokerGame>();
+            _container.RegisterSingleton<IUserOutput, ConsoleOutput>();
             _container.RegisterSingleton<IUserInput, ConsoleInput>();
             _container.RegisterSingleton<ICodeConverter, PokerCodesConverter>();
             _container.RegisterSingleton<IEnumerable<ICard>, InputCodesCollection>(new InjectionConstructor(typeof(ICodeConverter), typeof(IUserInput), CONSOLE_INPUT_COUNT));

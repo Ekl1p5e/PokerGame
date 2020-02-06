@@ -14,6 +14,17 @@ namespace PokerGameImplementation
         private const string GAME_RIGHT_WINNER_OUTPUT = "Right Hand Wins";
         private const string GAME_DEFAULT_OUTPUT = "";
 
+        private readonly IUserOutput _output;
+
+        /// <summary>
+        /// Creates an instance of the <see cref="PokerGameOutput"/> class
+        /// </summary>
+        /// <param name="output">interface for user output</param>
+        public PokerGameOutput(IUserOutput output)
+        {
+            _output = output;
+        }
+
         /// <summary>
         /// Outputs the result of a poker game
         /// </summary>
@@ -23,20 +34,18 @@ namespace PokerGameImplementation
             switch (result)
             {
                 case GameResult.Draw:
-                    Console.WriteLine(GAME_DRAW_OUTPUT);
+                    _output.Output(GAME_DRAW_OUTPUT);
                     break;
                 case GameResult.LeftHandWinner:
-                    Console.WriteLine(GAME_LEFT_WINNER_OUTPUT);
+                    _output.Output(GAME_LEFT_WINNER_OUTPUT);
                     break;
                 case GameResult.RightHandWinner:
-                    Console.WriteLine(GAME_RIGHT_WINNER_OUTPUT);
+                    _output.Output(GAME_RIGHT_WINNER_OUTPUT);
                     break;
                 default:
-                    Console.WriteLine(GAME_DEFAULT_OUTPUT);
+                    _output.Output(GAME_DEFAULT_OUTPUT);
                     break;
             }
-
-            Console.ReadLine();
         }
     }
 }
