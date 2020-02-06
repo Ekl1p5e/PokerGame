@@ -1,5 +1,4 @@
-﻿using PokerGame.Interfaces.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace PokerGame.Interfaces
 {
@@ -11,6 +10,6 @@ namespace PokerGame.Interfaces
         /// <summary>
         /// Gets cards of the hand
         /// </summary>
-        IEnumerable<Card> Cards { get; }
+        IEnumerable<ICard> Cards { get; }
     }
 }

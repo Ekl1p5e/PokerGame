@@ -20,7 +20,7 @@ namespace PokerGameImplementation.Rankings
 
         internal IEnumerable<CardValue> PairValues => Hand.GetKindGroup(GROUP_NUMBER).Select(group => group.Key);
 
-        internal IEnumerable<Card> Kickers => Hand.GetKickers(Hand.GetFlattenedKindGroup(GROUP_NUMBER));
+        internal IEnumerable<ICard> Kickers => Hand.GetKickers(Hand.GetFlattenedKindGroup(GROUP_NUMBER));
 
         protected override int TieBreaker(HandRanking other)
         {

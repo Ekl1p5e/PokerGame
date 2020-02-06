@@ -25,7 +25,7 @@ namespace PokerGameImplementation
         /// 0 if left and right are sequence equal
         /// 1 if left is greater than right
         /// </returns>
-        internal static int IsGreaterSequence(this IEnumerable<Card> left, IEnumerable<Card> right)
+        internal static int IsGreaterSequence(this IEnumerable<ICard> left, IEnumerable<ICard> right)
         {
             var orderedLeft = left.OrderByDescending(card => card.Value);
             var orderedRight = right.OrderByDescending(card => card.Value);
@@ -45,7 +45,7 @@ namespace PokerGameImplementation
         /// Compares hands to determine if greater, lesser, or the same
         /// </summary>
         /// <remarks>
-        /// Internally uses the overloaded <see cref="IsGreaterSequence(IEnumerable{Card}, IEnumerable{Card})"/> method
+        /// Internally uses the overloaded <see cref="IsGreaterSequence(IEnumerable{ICard}, IEnumerable{ICard})"/> method
         /// </remarks>
         /// <param name="left">Binding variable of left sequence</param>
         /// <param name="right">Sequence to compare</param>
@@ -65,7 +65,7 @@ namespace PokerGameImplementation
         /// <param name="hand">Binding variable</param>
         /// <param name="count">Count of kinds</param>
         /// <returns>An enumerable of enumerable groups of cards of requested count</returns>
-        internal static IEnumerable<IGrouping<CardValue, Card>> GetKindGroup(this IHand hand, int count)
+        internal static IEnumerable<IGrouping<CardValue, ICard>> GetKindGroup(this IHand hand, int count)
         {
             return hand.Cards.
                 GroupBy(card => card.Value).
@@ -78,7 +78,7 @@ namespace PokerGameImplementation
         /// <param name="hand">Hand of cards</param>
         /// <param name="exclude">Group of cards to exclude</param>
         /// <returns>Kicker cards</returns>
-        internal static IEnumerable<Card> GetKickers(this IHand hand, IEnumerable<Card> exclude)
+        internal static IEnumerable<ICard> GetKickers(this IHand hand, IEnumerable<ICard> exclude)
         {
             return hand.Cards.Except(exclude);
         }
@@ -144,7 +144,7 @@ namespace PokerGameImplementation
         /// <param name="hand">Hand of cards</param>
         /// <param name="count">Count per grouping</param>
         /// <returns>enumerable of cards from grouping</returns>
-        internal static IEnumerable<Card> GetFlattenedKindGroup(this IHand hand, int count)
+        internal static IEnumerable<ICard> GetFlattenedKindGroup(this IHand hand, int count)
         {
             return hand.GetKindGroup(count).SelectMany(group => group.ToList());
         }
