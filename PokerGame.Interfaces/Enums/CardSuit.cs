@@ -8,6 +8,6 @@
         Hearts,
         Diamonds,
         Spades,
-        Clubs
+        Clubs,
     }
 }

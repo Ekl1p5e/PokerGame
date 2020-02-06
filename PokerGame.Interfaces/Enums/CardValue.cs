@@ -17,6 +17,6 @@
         Jack,
         Queen,
         King,
-        Ace
+        Ace,
     }
 }

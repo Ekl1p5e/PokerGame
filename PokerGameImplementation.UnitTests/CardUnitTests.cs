@@ -1,18 +1,19 @@
-﻿using PokerGame.Interfaces.Entities;
-using PokerGame.Interfaces.Enums;
+﻿using PokerGame.Interfaces.Enums;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
-namespace PokerGame.Interfaces.UnitTests.EntitiesTests
+namespace PokerGameImplementation.UnitTests
 {
-    public class CardTests
+    [ExcludeFromCodeCoverage]
+    public class CardUnitTests
     {
         public static IEnumerable<object[]> CardEnums
         {
             get
             {
-                foreach(CardValue value in Enum.GetValues(typeof(CardValue)))
+                foreach (CardValue value in Enum.GetValues(typeof(CardValue)))
                 {
                     foreach (CardSuit suit in Enum.GetValues(typeof(CardSuit)))
                     {

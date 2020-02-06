@@ -3,11 +3,13 @@ using PokerGame.Interfaces;
 using PokerGameImplementation;
 using PokerGameImplementation.Interfaces;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Unity;
 using Unity.Injection;
 
 namespace PokerGameApp
 {
+    [ExcludeFromCodeCoverage]
     class Program
     {
         private const int HAND_CARDS_COUNT = 5;
