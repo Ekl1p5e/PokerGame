@@ -11,7 +11,101 @@ namespace PokerGameImplementation.UnitTests.Helpers
     [ExcludeFromCodeCoverage]
     internal static class Extensions
     {
-        internal static Mock<IHand> IsFlush(this Mock<IHand> hand, CardSuit suit = default)
+        internal static Mock<IHand> FourOfAKindHandRank(this Mock<IHand> hand, CardValue value = default)
+        {
+            var kinds = new List<Card>(Enum.GetValues(typeof(CardSuit)).
+                Cast<CardSuit>().
+                Take(4).
+                Select(suit => new Card(value, suit)));
+            var kicker = Enum.GetValues(typeof(CardValue)).Cast<CardValue>().Except(new[] { value }).Select(cardValue => new Card(cardValue, default)).First();
+            kinds.Add(kicker);
+
+            hand.SetupGet(p => p.Cards).Returns(kinds);
+
+            return hand;
+        }
+
+        internal static Mock<IHand> ThreeOfAKindHandRank(this Mock<IHand> hand, CardValue value = default)
+        {
+            var kinds = GetListOfCardsByKindCount(value, 3);
+            kinds.AddKickers();
+
+            hand.SetupGet(p => p.Cards).Returns(kinds);
+
+            return hand;
+        }
+
+        internal static Mock<IHand> FullHouseHandRank(this Mock<IHand> hand)
+        {
+            var values = Enum.GetValues(typeof(CardValue)).Cast<CardValue>().Take(2);
+
+            var threeKind = GetListOfCardsByKindCount(values.First(), 3);
+            var twoKind = GetListOfCardsByKindCount(values.Last(), 2);
+
+            hand.SetupGet(p => p.Cards).Returns(threeKind.Concat(twoKind));
+
+            return hand;
+        }
+
+        internal static Mock<IHand> TwoPairHandRank(this Mock<IHand> hand)
+        {
+            var values = Enum.GetValues(typeof(CardValue)).Cast<CardValue>().Take(2);
+
+            var firstPair = GetListOfCardsByKindCount(values.First(), 2);
+            var secondPair = GetListOfCardsByKindCount(values.Last(), 2);
+
+            var cards = firstPair.Concat(secondPair).AddKickers();
+
+            hand.SetupGet(p => p.Cards).Returns(cards);
+
+            return hand;
+        }
+
+        internal static Mock<IHand> OnePairHandRank(this Mock<IHand> hand)
+        {
+            var twoKind = GetListOfCardsByKindCount(default, 2);
+
+            var cards = twoKind.AddKickers();
+
+            hand.SetupGet(p => p.Cards).Returns(cards);
+
+            return hand;
+        }
+
+        internal static Mock<IHand> FlushHandRank(this Mock<IHand> hand)
+        {
+            return hand.IsFlush().
+                IsNotSequential();
+        }
+
+        internal static Mock<IHand> RoyalFlushHandRank(this Mock<IHand> hand)
+        {
+            return hand.IsFlush().
+                IsSequential().
+                AceHigh();
+        }
+
+        internal static Mock<IHand> StraightHandRank(this Mock<IHand> hand)
+        {
+            return hand.IsNotFlush().
+                IsSequential();
+        }
+
+        internal static Mock<IHand> StraightFlushHandRank(this Mock<IHand> hand)
+        {
+            return hand.IsFlush().
+                IsSequential().
+                NotAceHigh();
+        }
+
+        internal static Mock<IHand> HighCardHandRank(this Mock<IHand> hand)
+        {
+            return hand.IsNotFlush().
+                IsNotSequential().
+                NotAKind();
+        }
+
+        private static Mock<IHand> IsFlush(this Mock<IHand> hand, CardSuit suit = default)
         {
             var cards = hand.Object.Cards;
             if (cards.Count() < 5)
@@ -28,7 +122,7 @@ namespace PokerGameImplementation.UnitTests.Helpers
             return hand;
         }
 
-        internal static Mock<IHand> IsNotFlush(this Mock<IHand> hand)
+        private static Mock<IHand> IsNotFlush(this Mock<IHand> hand)
         {
             var cards = hand.Object.Cards;
             if (cards.Count() < 5)
@@ -54,7 +148,7 @@ namespace PokerGameImplementation.UnitTests.Helpers
             return hand;
         }
 
-        internal static Mock<IHand> IsNotSequential(this Mock<IHand> hand)
+        private static Mock<IHand> IsNotSequential(this Mock<IHand> hand)
         {
             var cards = hand.Object.Cards;
             if (cards.Count() < 5)
@@ -72,7 +166,7 @@ namespace PokerGameImplementation.UnitTests.Helpers
             return hand;
         }
 
-        internal static Mock<IHand> IsSequential(this Mock<IHand> hand)
+        private static Mock<IHand> IsSequential(this Mock<IHand> hand)
         {
             var cards = hand.Object.Cards;
             if (cards.Count() < 5)
@@ -89,7 +183,7 @@ namespace PokerGameImplementation.UnitTests.Helpers
             return hand;
         }
 
-        internal static Mock<IHand> NotAceHigh(this Mock<IHand> hand)
+        private static Mock<IHand> NotAceHigh(this Mock<IHand> hand)
         {
             var cards = hand.Object.Cards;
             if (cards.Count() < 5)
@@ -112,7 +206,7 @@ namespace PokerGameImplementation.UnitTests.Helpers
             return hand;
         }
 
-        internal static Mock<IHand> AceHigh(this Mock<IHand> hand)
+        private static Mock<IHand> AceHigh(this Mock<IHand> hand)
         {
             var cards = hand.Object.Cards;
             if (cards.Count() < 5)
@@ -137,68 +231,7 @@ namespace PokerGameImplementation.UnitTests.Helpers
             return hand;
         }
 
-        internal static Mock<IHand> FourOfAKind(this Mock<IHand> hand, CardValue value = default)
-        {
-            var kinds = new List<Card>(Enum.GetValues(typeof(CardSuit)).
-                Cast<CardSuit>().
-                Take(4).
-                Select(suit => new Card(value, suit)));
-            var kicker = Enum.GetValues(typeof(CardValue)).Cast<CardValue>().Except(new[] { value }).Select(cardValue => new Card(cardValue, default)).First();
-            kinds.Add(kicker);
-
-            hand.SetupGet(p => p.Cards).Returns(kinds);
-
-            return hand;
-        }
-
-        internal static Mock<IHand> ThreeOfAKind(this Mock<IHand> hand, CardValue value = default)
-        {
-            var kinds = GetListOfCardsByKindCount(value, 3);
-            kinds.AddKickers();
-
-            hand.SetupGet(p => p.Cards).Returns(kinds);
-
-            return hand;
-        }
-
-        internal static Mock<IHand> FullHouse(this Mock<IHand> hand)
-        {
-            var values = Enum.GetValues(typeof(CardValue)).Cast<CardValue>().Take(2);
-
-            var threeKind = GetListOfCardsByKindCount(values.First(), 3);
-            var twoKind = GetListOfCardsByKindCount(values.Last(), 2);
-
-            hand.SetupGet(p => p.Cards).Returns(threeKind.Concat(twoKind));
-
-            return hand;
-        }
-
-        internal static Mock<IHand> TwoPair(this Mock<IHand> hand)
-        {
-            var values = Enum.GetValues(typeof(CardValue)).Cast<CardValue>().Take(2);
-
-            var firstPair = GetListOfCardsByKindCount(values.First(), 2);
-            var secondPair = GetListOfCardsByKindCount(values.Last(), 2);
-
-            var cards = firstPair.Concat(secondPair).AddKickers();
-
-            hand.SetupGet(p => p.Cards).Returns(cards);
-
-            return hand;
-        }
-
-        internal static Mock<IHand> OnePair(this Mock<IHand> hand)
-        {
-            var twoKind = GetListOfCardsByKindCount(default, 2);
-
-            var cards = twoKind.AddKickers();
-
-            hand.SetupGet(p => p.Cards).Returns(cards);
-
-            return hand;
-        }
-
-        internal static Mock<IHand> NotAKind(this Mock<IHand> hand)
+        private static Mock<IHand> NotAKind(this Mock<IHand> hand)
         {
             var cards = hand.Object.Cards;
             if (cards.Count() < 5)

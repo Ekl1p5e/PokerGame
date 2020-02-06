@@ -1,6 +1,6 @@
 ﻿using PokerGame.Interfaces.Enums;
 
-namespace PokerGame.Interfaces
+namespace PokerGameImplementation.Interfaces
 {
     /// <summary>
     /// Interface that allows for the handling of a game result

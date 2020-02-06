@@ -11,11 +11,9 @@ namespace PokerGameImplementation.UnitTests
     public class PokerHandRankerUnitTests
     {
         [Fact]
-        public void GetRanking_IsFlushAndNotSequential_ReturnsFlushType()
+        public void GetRanking_FlushHand_ReturnsFlushType()
         {
-            var hand = new Mock<IHand>().
-                IsFlush().
-                IsNotSequential();
+            var hand = new Mock<IHand>().FlushHandRank();
 
             var ranker = new PokerHandRanker();
 
@@ -25,12 +23,9 @@ namespace PokerGameImplementation.UnitTests
         }
 
         [Fact]
-        public void GetRanking_IsFlushAndSequentialWithoutHighAce_ReturnsStraightFlushType()
+        public void GetRanking_StraightFlushHand_ReturnsStraightFlushType()
         {
-            var hand = new Mock<IHand>().
-                IsFlush().
-                IsSequential().
-                NotAceHigh();
+            var hand = new Mock<IHand>().StraightFlushHandRank();
 
             var ranker = new PokerHandRanker();
 
@@ -40,12 +35,9 @@ namespace PokerGameImplementation.UnitTests
         }
 
         [Fact]
-        public void GetRanking_IsFlushAndSequentialWithHighAce_ReturnsRoyalFlushType()
+        public void GetRanking_RoyalFlushHand_ReturnsRoyalFlushType()
         {
-            var hand = new Mock<IHand>().
-                IsFlush().
-                IsSequential().
-                AceHigh();
+            var hand = new Mock<IHand>().RoyalFlushHandRank();
 
             var ranker = new PokerHandRanker();
 
@@ -55,9 +47,9 @@ namespace PokerGameImplementation.UnitTests
         }
 
         [Fact]
-        public void GetRanking_FourCardsOfAKind_ReturnsFourOfAKindType()
+        public void GetRanking_FourOfAKindHand_ReturnsFourOfAKindType()
         {
-            var hand = new Mock<IHand>().FourOfAKind();
+            var hand = new Mock<IHand>().FourOfAKindHandRank();
 
             var ranker = new PokerHandRanker();
 
@@ -67,9 +59,9 @@ namespace PokerGameImplementation.UnitTests
         }
 
         [Fact]
-        public void GetRanking_ThreeCardsOfAKindNoFullHouse_ReturnsThreeOfAKindType()
+        public void GetRanking_ThreeOfAKindHand_ReturnsThreeOfAKindType()
         {
-            var hand = new Mock<IHand>().ThreeOfAKind();
+            var hand = new Mock<IHand>().ThreeOfAKindHandRank();
 
             var ranker = new PokerHandRanker();
 
@@ -79,9 +71,9 @@ namespace PokerGameImplementation.UnitTests
         }
 
         [Fact]
-        public void GetRanking_ThreeCardsOfAKindAndTwoCardsOfAKind_ReturnsFullHouseType()
+        public void GetRanking_FullHouseHand_ReturnsFullHouseType()
         {
-            var hand = new Mock<IHand>().FullHouse();
+            var hand = new Mock<IHand>().FullHouseHandRank();
 
             var ranker = new PokerHandRanker();
 
@@ -91,9 +83,9 @@ namespace PokerGameImplementation.UnitTests
         }
 
         [Fact]
-        public void GetRanking_TwoPairs_ReturnsTwoPairType()
+        public void GetRanking_TwoPairsHand_ReturnsTwoPairType()
         {
-            var hand = new Mock<IHand>().TwoPair();
+            var hand = new Mock<IHand>().TwoPairHandRank();
 
             var ranker = new PokerHandRanker();
 
@@ -103,9 +95,9 @@ namespace PokerGameImplementation.UnitTests
         }
 
         [Fact]
-        public void GetRanking_OnePair_ReturnsOnePairType()
+        public void GetRanking_OnePairHand_ReturnsOnePairType()
         {
-            var hand = new Mock<IHand>().OnePair();
+            var hand = new Mock<IHand>().OnePairHandRank();
 
             var ranker = new PokerHandRanker();
 
@@ -115,11 +107,9 @@ namespace PokerGameImplementation.UnitTests
         }
 
         [Fact]
-        public void GetRanking_IsNotFlushAndIsSequential_ReturnsStraightType()
+        public void GetRanking_StraightHand_ReturnsStraightType()
         {
-            var hand = new Mock<IHand>().
-                IsNotFlush().
-                IsSequential();
+            var hand = new Mock<IHand>().StraightHandRank();
 
             var ranker = new PokerHandRanker();
 
@@ -129,12 +119,9 @@ namespace PokerGameImplementation.UnitTests
         }
 
         [Fact]
-        public void GetRanking_IsNotFlushOrSequentialOrOfAKind_ReturnsHighCard()
+        public void GetRanking_HighCardHand_ReturnsHighCard()
         {
-            var hand = new Mock<IHand>().
-                IsNotFlush().
-                IsNotSequential().
-                NotAKind();
+            var hand = new Mock<IHand>().HighCardHandRank();
 
             var ranker = new PokerHandRanker();
 
