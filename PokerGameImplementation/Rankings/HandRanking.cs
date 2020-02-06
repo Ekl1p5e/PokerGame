@@ -45,7 +45,7 @@ namespace PokerGameImplementation.Rankings
                 }
                 else
                 {
-                    TieBreaker(ranking);
+                    return TieBreaker(ranking);
                 }
             }
 

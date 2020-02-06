@@ -29,8 +29,9 @@ namespace PokerGameImplementation
             var orderedLeft = left.OrderByDescending(card => card.Value);
             var orderedRight = right.OrderByDescending(card => card.Value);
 
-            if (orderedLeft.Zip(orderedRight, (l, r) => new { left = l, right = r }).
-                FirstOrDefault(z => z.left.Value != z.right.Value) is var result)
+            var result = orderedLeft.Zip(orderedRight, (l, r) => new { left = l, right = r }).
+                FirstOrDefault(z => z.left.Value != z.right.Value);
+            if (result != null)
             {
                 return result.left.Value > result.right.Value ? 1 : -1;
             }

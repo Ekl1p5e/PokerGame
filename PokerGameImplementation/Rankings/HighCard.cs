@@ -1,6 +1,8 @@
 ﻿using PokerGame.Interfaces;
 using PokerGameImplementation.Enums;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("PokerGameImplementation.UnitTests")]
 namespace PokerGameImplementation.Rankings
 {
     /// <summary>
