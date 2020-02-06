@@ -1,2 +1,11 @@
 # PokerGame
- 
+
+Operating The Application
+=========================
+The entry point for the Poker Game is in the PokerGameApp project. Once the application is built and run, the application will launch with a prompt asking the user for 10 codes that represent poker cards in a poker game. The codes are to be separated by a space, with the first 5 cards representing the left hand and the last 5 cards representing the right hand. Each code is made up of two characters representing the value and suit components of a poker game card. The characters for each card value are 2-9, T (10), J (Jack), Q (Queen), K (King), and A (Ace). The characters for each card suit are H (Hearts), D (Diamonds), C (Clubs), and S (Spades). Each code has the value place first, followed by the suit (ex. TS is the 10 of spades). Once the user has made input, if the codes are valid, are of the correct number, and do not conflict between hands, then a result indicating which hand won or a draw if neither hand one. If the application was unable to evaluate the hands due to invalid input, an exception message is shown indicating what is the problem. Pressing enter exits the application.
+
+Solution Approach
+=================
+The core entities of the game are in the PokerGame.Interfaces project. This project has the basic interfaces and enumerations needed to develop the poker game. There are enums for the suit, value, and game result. There are also interfaces for cards and hands. The IHandEnumerator interface acts as an interface for a dealer and the IPokerGame interface acts as an interface for a comparison engine.
+
+The actual implementation of the game is located in the PokerGameImplementation project. The project contains classes that encapsulate the different rankings. The rankings derive from a handranking base class which handles the general comparison between the derived classes. Each derived class is associated with an enum value to take advantage of the ordering for comparison. A derived ranking class is required to implement its own tie breaker algorithm. These classes are internal and are created by a hand ranker class that takes in a hand and classifies it. The hands are created by a hand enumerator that iterates over a collection of cards and groups them into hands. Cards are created by the InputCodesCollection class, which takes UserInput along with the codes converter and translates the codes into a collection of cards. The BasicPokerGame class uses a ranker to determine how each hand is ranked in order to compare and determine a winner.

@@ -45,7 +45,7 @@ namespace PokerGameApp
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException.Message);
                 Console.ReadLine();
             }
         }
