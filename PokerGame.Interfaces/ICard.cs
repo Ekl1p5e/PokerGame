@@ -1,11 +1,12 @@
 ﻿using PokerGame.Interfaces.Enums;
+using System;
 
 namespace PokerGame.Interfaces
 {
     /// <summary>
     /// Interface to be implemented for cards within a poker game
     /// </summary>
-    public interface ICard
+    public interface ICard : IEquatable<ICard>
     {
         /// <summary>
         /// Gets the suit of the card

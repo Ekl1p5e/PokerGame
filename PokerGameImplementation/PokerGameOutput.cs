@@ -22,7 +22,7 @@ namespace PokerGameImplementation
         /// <param name="output">interface for user output</param>
         public PokerGameOutput(IUserOutput output)
         {
-            _output = output;
+            _output = output ?? throw new ArgumentNullException(nameof(output));
         }
 
         /// <summary>

@@ -3,9 +3,7 @@ using PokerGame.Interfaces;
 using PokerGameImplementation.Enums;
 using PokerGameImplementation.Rankings;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Text;
 using Xunit;
 
 namespace PokerGameImplementation.UnitTests.RankingTests

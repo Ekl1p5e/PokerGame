@@ -13,7 +13,7 @@ namespace PokerGameImplementation
         private const string Prompt = "Enter the system codes for two hands of cards:";
 
         /// <summary>
-        /// Returns input
+        /// Returns input from console
         /// </summary>
         /// <returns>string input</returns>
         public string GetInput()

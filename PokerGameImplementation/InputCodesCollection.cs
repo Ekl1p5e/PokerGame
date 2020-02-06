@@ -21,6 +21,16 @@ namespace PokerGameImplementation
         /// <param name="count">Number of codes expected from user</param>
         public InputCodesCollection(ICodeConverter converter, IUserInput userInput, int count)
         {
+            if (converter == null)
+            {
+                throw new ArgumentNullException(nameof(converter));
+            }
+
+            if (userInput == null)
+            {
+                throw new ArgumentNullException(nameof(userInput));
+            }
+
             var input = userInput.GetInput();
             var codes = input.Trim().Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Distinct();
 

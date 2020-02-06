@@ -10,9 +10,13 @@ namespace PokerGameImplementation
     [ExcludeFromCodeCoverage]
     public class ConsoleOutput : IUserOutput
     {
-        public void Output(string result)
+        /// <summary>
+        /// Outputs result to the console
+        /// </summary>
+        /// <param name="output">output string</param>
+        public void Output(string output)
         {
-            Console.WriteLine(result);
+            Console.WriteLine(output);
             Console.ReadLine();
         }
     }

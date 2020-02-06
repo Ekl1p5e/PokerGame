@@ -10,7 +10,7 @@ using System.Linq;
 namespace PokerGameImplementation.UnitTests.Helpers
 {
     [ExcludeFromCodeCoverage]
-    internal static class Extensions
+    public static class Extensions
     {
         private static IFixture _fixture;
 
@@ -271,7 +271,7 @@ namespace PokerGameImplementation.UnitTests.Helpers
             return cards.Concat(kickers);
         }
 
-        public static IFixture TestFixture
+        public static IFixture PokerGameTestFixture
         {
             get
             {

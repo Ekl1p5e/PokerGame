@@ -28,5 +28,11 @@ namespace PokerGameImplementation
         /// Gets the value of the card
         /// </summary>
         public CardValue Value { get; }
+
+        public bool Equals(ICard other)
+        {
+            return Suit == other.Suit &&
+                Value == other.Value;
+        }
     }
 }
